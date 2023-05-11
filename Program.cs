@@ -21,10 +21,15 @@ namespace HelloWorld
 
             Vector3 cubePosition = new Vector3 (0, 0, 0);
 
+            Raylib.DisableCursor();
+
             Raylib.SetTargetFPS(60);        // Set our game to run at 60 frames-per-second
 
-            while (!Raylib.WindowShouldClose())
+            while (!Raylib.WindowShouldClose()) // Detect window close button or ESC key
             {
+                Raylib.UpdateCamera(ref camera, CameraMode.CAMERA_FREE);
+                if (Raylib.IsKeyDown((KeyboardKey)'Z')) camera.target = new Vector3 (0, 0, 0);
+
                 Raylib.BeginDrawing();
                     Raylib.ClearBackground(Color.WHITE);
 
